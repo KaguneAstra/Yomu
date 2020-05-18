@@ -1,20 +1,62 @@
 import 'package:flutter/material.dart';
 
+int _score;
+
 class PostContainer extends StatelessWidget {
-  double _height;
-  double _width;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: _height,
-      width: _width,
-      child: Text("Post title"),
-      color: Colors.grey,
+    return Column(
+      children: [
+        //Top row for Post(title, subreddit, options)
+        Row(
+          children: [
+            Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(8),
+                  child: Text(
+                    'Post title',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  child: Text(
+                    'r/idk',
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              child: Text('Button'),
+            ),
+          ],
+        ),
+        //image or post text container
+        Container(
+          child: Text('ahahahahah why are you looking here'),
+        ),
+        //upvote/downvote row
+        Row(
+          children: [
+            Container(
+              child: Text('Score: $_score'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
-  PostContainer(double width, double height) {
-    this._height = height;
-    this._width = width;
+  /*
+    This post container will contain 2 rows and
+    a picture/text container in the middle
+    the first row will contain a column and 1 button on the right side
+    
+    The container will either have a picture or text
+    
+    The last row will contain upvote/downvote and other buttons
+  */
+  PostContainer(int score) {
+    _score = score;
   }
 }
