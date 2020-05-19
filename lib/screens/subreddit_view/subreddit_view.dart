@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:yomu_for_reddit/widgets/container.dart';
+import 'package:yomu_for_reddit/widgets/post_container.dart';
 
 List<String> posts = <String>["Post 1", "Post 2", "Post 3"];
+int counter = 1;
 
 class SubredditView extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class SubredditView extends StatefulWidget {
 class _SubredditViewState extends State<SubredditView> {
   void addPostToList() {
     setState(() {
-      posts.insert(posts.length, "A new post has arrived");
+      counter++;
     });
   }
 
@@ -27,15 +28,9 @@ class _SubredditViewState extends State<SubredditView> {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(8),
-              itemCount: posts.length,
+              itemCount: counter,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 50,
-                  margin: EdgeInsets.all(2),
-                  child: Center(
-                    child: Text('${posts[index]}'),
-                  ),
-                );
+                return PostContainer(counter);
               },
             ),
           ),
