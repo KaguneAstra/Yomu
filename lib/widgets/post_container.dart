@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:yomu_for_reddit/widgets/text_container.dart';
 
 int _score;
+Widget _postContent;
 
 class PostContainer extends StatelessWidget {
   @override
@@ -39,18 +41,7 @@ class PostContainer extends StatelessWidget {
           ],
         ),
         //image or post text container
-        Container(
-          width: 700,
-          child: Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            textAlign: TextAlign.left,
-            overflow: TextOverflow.fade,
-            maxLines: 3,
-            style: TextStyle(
-              fontSize: 12,
-            ),
-          ),
-        ),
+        _postContent,
         //upvote/downvote row
         Row(
           children: [
@@ -64,15 +55,17 @@ class PostContainer extends StatelessWidget {
   }
 
   /*
-    This post container will contain 2 rows and
-    a picture/text container in the middle
-    the first row will contain a column and 1 button on the right side
-    
-    The container will either have a picture or text
-    
-    The last row will contain upvote/downvote and other buttons
+      TO DO: 
+      Abstract the middle container to be able to take any container
+      Create local private variable to contain the middle container
+      Create local private function to return said container
+      Create picture container
+      Move text container to another class
+      Create cross post container
   */
+
   PostContainer(int score) {
     _score = score;
+    _postContent = TextContainer();
   }
 }
