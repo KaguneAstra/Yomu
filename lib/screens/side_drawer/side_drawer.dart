@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:yomu_for_reddit/screens/side_drawer/account_drawer_footer.dart';
 import 'package:yomu_for_reddit/screens/side_drawer/account_drawer_header.dart';
+import 'package:yomu_for_reddit/screens/side_drawer/account_inbox_view/account_inbox_view.dart';
+import 'package:yomu_for_reddit/screens/side_drawer/saved_post_view/saved_post_view.dart';
 
 import 'account_info_view/account_info_view.dart';
 
 class SideDrawer extends StatelessWidget {
-  // This is to be replaced at some later date
+  // These are to be replaced at some later date
+  final List<String> favArray = [
+    "r/MechanicalKeyboards",
+    "r/unixporn",
+    "r/anime_irl",
+    "r/programmerhumor",
+  ];
   final List<String> testArray = [
-    "r/MechanicalKeyboardsMechanicalKeyboards",
     "Second",
     "Third",
     "First",
@@ -17,9 +25,9 @@ class SideDrawer extends StatelessWidget {
     "Third"
   ];
 
-  List<ListTile> _makeSubredditList(BuildContext context) {
+  List<ListTile> _makeSubredditList(BuildContext context, List<String> arr) {
     List<ListTile> subredditList = [];
-    for (String str in testArray) {
+    for (String str in arr) {
       subredditList.add(
         ListTile(
           title: Text(
@@ -43,6 +51,28 @@ class SideDrawer extends StatelessWidget {
     return subredditList;
   }
 
+  ListTile _makeCustomListTile(BuildContext context, String title, Icon icon,
+      Widget Function() gotoPage) {
+    return ListTile(
+      title: Text(title, style: Theme.of(context).textTheme.bodyText2),
+      leading: icon,
+      dense: true,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => gotoPage()),
+        );
+      },
+    );
+  }
+
+  Widget _makeSubTitle(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Text(text, style: TextStyle(color: Colors.black45)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -56,7 +86,7 @@ class SideDrawer extends StatelessWidget {
           ),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.all(0),
+              padding: EdgeInsets.symmetric(vertical: 10),
               children: <Widget>[
                 ListTile(
                   title: Text("Home",
@@ -68,32 +98,22 @@ class SideDrawer extends StatelessWidget {
                     Navigator.pop(context);
                   },
                 ),
-                ListTile(
-                  title: Text("Inbox",
-                      style: Theme.of(context).textTheme.bodyText2),
-                  leading: Icon(Icons.mail),
-                  dense: true,
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: Text("Saved",
-                      style: Theme.of(context).textTheme.bodyText2),
-                  leading: Icon(Icons.star),
-                  dense: true,
-                  onTap: () {},
-                ),
+                _makeCustomListTile(context, "Profile", Icon(Icons.person),
+                    () => AccountInfoView()),
+                _makeCustomListTile(context, "Inbox", Icon(Icons.mail),
+                    () => AccountInboxView()),
+                _makeCustomListTile(
+                    context, "Saved", Icon(Icons.star), () => SavedPostView()),
                 Divider(thickness: 2.0),
-                ..._makeSubredditList(context),
+                _makeSubTitle("Favourites"),
+                ..._makeSubredditList(context, favArray),
+                Divider(thickness: 2.0),
+                _makeSubTitle("All subreddits"),
+                ..._makeSubredditList(context, testArray),
               ],
             ),
           ),
-          Divider(thickness: 2.0),
-          ListTile(
-            title:
-                Text("Settings", style: Theme.of(context).textTheme.bodyText2),
-            leading: Icon(Icons.settings),
-            dense: true,
-          ),
+          AccountDrawerFooter(),
         ],
       ),
     );
