@@ -25,6 +25,7 @@ class SideDrawer extends StatelessWidget {
     "Third"
   ];
 
+  /// Make a custom ListTile for a subreddit, tap to go to a corresponding SubredditView
   List<ListTile> _makeSubredditList(BuildContext context, List<String> arr) {
     List<ListTile> subredditList = [];
     for (String str in arr) {
@@ -42,6 +43,7 @@ class SideDrawer extends StatelessWidget {
             backgroundColor: Colors.grey,
           ),
           dense: true,
+          // TODO - Hookup to go to a SubredditView of the corresponding subreddit
           onTap: () {
             print(str);
           },
@@ -51,6 +53,7 @@ class SideDrawer extends StatelessWidget {
     return subredditList;
   }
 
+  /// Makes a custom Listile that goes to a specified page.
   ListTile _makeCustomListTile(BuildContext context, String title, Icon icon,
       Widget Function() gotoPage) {
     return ListTile(
@@ -66,6 +69,7 @@ class SideDrawer extends StatelessWidget {
     );
   }
 
+  /// Slightly faded subtitle text, to be placed in the ListView
   Widget _makeSubTitle(String text) {
     return Padding(
       padding: const EdgeInsets.only(left: 20),
@@ -80,6 +84,7 @@ class SideDrawer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          // Change this to go well with the reddit API
           AccountDrawerHeader(
             Text("u/moonlight_spliter", style: TextStyle(fontSize: 18)),
             Text("Karma: 1337"),

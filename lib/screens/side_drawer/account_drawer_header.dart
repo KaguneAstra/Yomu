@@ -9,32 +9,33 @@ class AccountDrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 120,
       decoration: BoxDecoration(
-        //color: Colors.orange,
         boxShadow: <BoxShadow>[
           BoxShadow(
             blurRadius: 10,
-            //offset: Offset(0, 1),
             color: Colors.black38,
           )
         ],
       ),
       child: Material(
+        // TODO - Change color of header here to match theme
         color: Colors.orange,
         child: InkWell(
+          // Splash color of InkWell (Should match the color of parent Material widget)
           splashColor: Colors.orange[800],
-          highlightColor: Colors.orange[700],
+          highlightColor: Colors.orange[400],
           onTap: () {
             print('test');
           },
           child: Container(
-            height: 120,
             padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 CircleAvatar(
+                  // TODO - Show account profile picture here
                   radius: 30,
                   backgroundColor: Colors.grey,
                 ),

@@ -6,26 +6,25 @@ class AccountDrawerFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 55,
-      //padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.orange,
         boxShadow: <BoxShadow>[
           BoxShadow(
             blurRadius: 10,
-            //offset: Offset(0, 1),
             color: Colors.black38,
           )
         ],
       ),
       child: Row(
         children: <Widget>[
-          // TODO - Add some flair to these InkWells;
           Expanded(
             child: Material(
+              // TODO - Change color of footer here to match theme
               color: Colors.orange,
               child: InkWell(
+                // Splash color of InkWell (Should match the color of parent Material widget)
                 splashColor: Colors.orange[800],
-                highlightColor: Colors.orange[700],
+                highlightColor: Colors.orange[400],
                 onTap: () {
                   Navigator.push(
                     context,
@@ -54,6 +53,7 @@ class AccountDrawerFooter extends StatelessWidget {
               child: Container(
                 height: 30,
                 width: 30,
+                // TODO - Decoration & toggle logic needs to be implemented
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   shape: BoxShape.circle,
