@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yomu_for_reddit/widgets/under_construction.dart';
 
 class AccountInfoView extends StatefulWidget {
   @override
@@ -35,17 +36,28 @@ class _AccountInfoViewState extends State<AccountInfoView> {
         ),
         body: TabBarView(
           children: <Widget>[
-            Text("Overview"),
-            Text("About"), // custom view
-            Text("Posts"), // put kevin's infinitescroller here
-            Text("Comments"), // custom scroller widget
-            Text("Saved"), // put kevin's infinitescroller here
-            Text("Hidden"), // put kevin's infinitescroller here
-            Text("Upvoted"), // put kevin's infinitescroller here
-            Text("Downvoted"), // put kevin's infinitescroller here
-            Text("Gilded"), // put kevin's infinitescroller here
-            Text("Friends"),
-            Text("Blocks"),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            UnderConstruction(),
+            //Text("Overview"),
+            //Text("About"), // custom view
+            //Text("Posts"), // put kevin's infinitescroller here
+            //Text("Comments"), // custom scroller widget
+            //Text("Saved"), // put kevin's infinitescroller here
+            //Text("Hidden"), // put kevin's infinitescroller here
+            //Text("Upvoted"), // put kevin's infinitescroller here
+            //Text("Downvoted"), // put kevin's infinitescroller here
+            //Text("Gilded"), // put kevin's infinitescroller here
+            //Text("Friends"),
+            //Text("Blocks"),
           ],
         ),
       ),
