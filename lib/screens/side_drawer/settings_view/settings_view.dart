@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AccountInfoView extends StatelessWidget {
+class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Text("This is the account info view"),
+        child: Text("This is the settings view"),
         alignment: Alignment.center,
-        color: Colors.red,
+        color: Colors.grey,
       ),
     );
   }
