@@ -13,6 +13,9 @@ class _SubredditViewState extends State<SubredditView> {
   void addPostToList() {
     setState(() {
       counter++;
+      if (counter > 2) {
+        counter = 0;
+      }
     });
   }
 
@@ -25,15 +28,15 @@ class _SubredditViewState extends State<SubredditView> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(
-            child: ListView.builder(
+          PostContainer(0),
+          /*ListView.builder(
+              addAutomaticKeepAlives: true,
               padding: const EdgeInsets.all(8),
               itemCount: counter,
               itemBuilder: (BuildContext context, int index) {
-                return PostContainer(counter);
+                return PostContainer(counter % 4);
               },
-            ),
-          ),
+            ),*/
         ],
       ),
       //This is just test code
